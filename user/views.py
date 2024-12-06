@@ -5,9 +5,7 @@ from django.contrib.auth import authenticate, login as auth_login,logout
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 
-# Create your views here.
 def home(request):
-    # You can access the user's username using request.user
     username = request.user.username
     return render(request, 'home.html', {'username': username})
 
