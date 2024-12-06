@@ -32,7 +32,7 @@ def register(request):
                 first_name=first_name,
                 last_name=last_name,
                 email=email,
-                username=email,  # Using email as username
+                username=email, 
                 password=password
             )
             messages.success(request, "Registration successful! Please log in.")
@@ -77,22 +77,19 @@ def login(request):
         print(email,"email")
         print(password,"password")
 
-        # Authenticate user using email and password
         user = authenticate(request, email=email, password=password)
 
         print(user,user)
 
         if user is not None:
-            # If user exists and password is correct, log them in
             auth_login(request, user)
             messages.success(request, 'You are now logged in.')
-            return redirect('home')  # Redirect to home page after successful login
+            return redirect('home') 
         else:
-            # If authentication failed
             messages.error(request, 'Invalid email or password.')
 
     return render(request, 'login.html')
 
 def user_logout(request):
-    logout(request)  # Logs out the user
+    logout(request) 
     return redirect('/')
